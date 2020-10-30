@@ -15,7 +15,7 @@ class Card {
 
 function initCards() {
   let types = ["Cloves", "Diamond", "Heart", "Spade"];
-  let numbers = ["A", "K"];
+  let numbers = ["K", "A"];
   let cards = [];
   let counter = 0;
   [1, 2].forEach((_) => {
@@ -110,30 +110,22 @@ function initialize() {
 
   quarters = quarters.map((row) => createComponent("row", () => row));
   console.log("******", quarters);
-  document.getElementById("container").innerHTML = quarters
-    .join("")
-    .replaceAll(",", "");
-  // .replace("'", "");
+  $("#container").html(quarters.join("").replaceAll(",", ""));
 
-  // Adding triggers
-  $(document).ready(function () {
-    $(".card").click(function () {
-      let id = $(this).attr("id");
-      clickCard(id);
-    });
+  $(".card").click(function () {
+    let id = $(this).attr("id");
+    clickCard(id);
   });
 }
 let seconds = 0;
 let interval = setInterval(counter, 1000);
 function counter() {
   seconds++;
-  $(document).ready(function () {
-    $("#counter").html(
-      `${Math.floor(seconds / 60)}:${
-        seconds % 60 < 10 ? "0" + (seconds % 60) : seconds % 60
-      }`
-    );
-  });
+  $("#counter").html(
+    `${Math.floor(seconds / 60)}:${
+      seconds % 60 < 10 ? "0" + (seconds % 60) : seconds % 60
+    }`
+  );
 }
 
 initialize();
