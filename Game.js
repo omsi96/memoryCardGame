@@ -15,7 +15,7 @@ class Card {
 
 function initCards() {
   let types = ["Cloves", "Diamond", "Heart", "Spade"];
-  let numbers = ["A"];
+  let numbers = ["A", "K"];
   let cards = [];
   let counter = 0;
   [1, 2].forEach((_) => {
@@ -108,11 +108,12 @@ function initialize() {
   }
   quarters.push([cardsComponents]);
 
-  quarters = quarters.map((row) => row.join(""));
-
   quarters = quarters.map((row) => createComponent("row", () => row));
   console.log("******", quarters);
-  document.getElementById("container").innerHTML = quarters;
+  document.getElementById("container").innerHTML = quarters
+    .join("")
+    .replaceAll(",", "");
+  // .replace("'", "");
 
   // Adding triggers
   $(document).ready(function () {
